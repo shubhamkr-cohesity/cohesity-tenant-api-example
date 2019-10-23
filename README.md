@@ -336,4 +336,7 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
  - `viewBoxId` is the storage domain id (set earlier)
  - `policyId` is the policy for the protection job.
 
-## 
+# Using POSTMAN collection
+ - Import the Cohesity-tenant.postman_collection.json JSON file in POSTMAN
+ - Set environment variables, `host=https://CLUSTER-FQDN/irisservices/api/v1` and `auth=<BEARER-TOKEN>`
+ - Start consuming the APIs
