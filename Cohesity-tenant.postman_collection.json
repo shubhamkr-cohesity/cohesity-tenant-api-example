@@ -1,0 +1,879 @@
+{
+	"info": {
+		"_postman_id": "67694da7-ce16-4785-befa-cdc5dd1c7e4c",
+		"name": "ABN AMRO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Request bearer token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"admin\",\n\t\"password\": \"admin\",\n\t\"domain\": \"LOCAL\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/accessTokens",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"accessTokens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Organizations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/tenants?status=Active&properties[]=ProtectionPolicy&properties[]=ViewBox",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"tenants"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Active"
+						},
+						{
+							"key": "properties[]",
+							"value": "ProtectionPolicy"
+						},
+						{
+							"key": "properties[]",
+							"value": "ViewBox"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new organization",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"Sample Cohesity Tenant\",\n  \"name\": \"XYZ Org\",\n  \"orgSuffix\": \"xyzOrg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/tenants",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"tenants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an organization",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"tenantId\": \"sfx2/\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/tenants",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"tenants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Protection Policies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/protectionPolicies",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"protectionPolicies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Protection Policy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "x-impersonate-tenant-id",
+						"value": "xyzOrg/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"TestPolicy-XYZOrg\",\n    \"incrementalSchedulingPolicy\": {\n        \"periodicity\": \"kDaily\",\n        \"dailySchedule\": {\n            \"days\": []\n        }\n    },\n    \"daysToKeep\": 90,\n    \"retries\": 3,\n    \"retryIntervalMins\": 30,\n    \"blackoutPeriods\": [],\n    \"extendedRetentionPolicies\": [],\n    \"snapshotReplicationCopyPolicies\": [],\n    \"snapshotArchivalCopyPolicies\": [],\n    \"cloudDeployPolicies\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/protectionPolicies",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"protectionPolicies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Protection Policy to a tenant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"policyIds\": [\n    \"2425993104764203:1568297549728:1\"\n  ],\n  \"tenantId\": \"xyzOrg/\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/tenants/policy",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"tenants",
+						"policy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Storage Domains",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/viewBoxes?allUnderHierarchy=false",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"viewBoxes"
+					],
+					"query": [
+						{
+							"key": "allUnderHierarchy",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Storage Domain",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"XYZ-Domain3\",\n    \"clusterPartitionId\": 3,\n    \"storagePolicy\": {\n        \"deduplicationEnabled\": true,\n        \"inlineDeduplicate\": true,\n        \"compressionPolicy\": \"kCompressionLow\",\n        \"inlineCompress\": true,\n        \"encryptionPolicy\": \"kEncryptionNone\",\n        \"erasureCodingInfo\": {\n            \"erasureCodingEnabled\": false\n        },\n        \"numFailuresTolerated\": 0,\n        \"numNodeFailuresTolerated\": 0\n    },\n    \"physicalQuota\": {},\n    \"defaultViewQuotaPolicy\": {},\n    \"cloudDownWaterfallThresholdSecs\": 5184000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/viewBoxes",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"viewBoxes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Storage Domain to a tenant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"tenantId\": \"xyzOrg/\",\n  \"viewBoxIds\": [\n    2487759\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/tenants/viewBox",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"tenants",
+						"viewBox"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Roles",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/roles",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-impersonate-tenant-id",
+						"value": "xyzOrg/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"domain\": \"LOCAL\",\n    \"roles\": [\n        \"COHESITY_ADMIN\"\n    ],\n    \"restricted\": false,\n    \"type\": \"user\",\n    \"username\": \"test-user5\",\n    \"emailAddress\": \"testuser5@cohesity.com\",\n    \"password\": \"Password\",\n    \"passwordConfirm\": \"Password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/users",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-impersonate-tenant-id",
+						"value": "xyzOrg/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/users?allUnderHierarchy=false",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"users"
+					],
+					"query": [
+						{
+							"key": "allUnderHierarchy",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign User to a tenant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json;charset=UTF-8"
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"sids\": [\n  \t\"S-1-21-21-20753707-18075057-16\"\n  ],\n  \"tenantId\": \"testOrg2/\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/public/tenants/users",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"tenants",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Protection Source",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-impersonate-tenant-id",
+						"value": "xyzOrg/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"endpoint\": \"fqdn\",\n  \"environment\": \"kVMware\",\n  \"username\": \"username\",\n  \"password\":\"password\",\n  \"vmwareType\": \"kVCenter\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/public/protectionSources/register",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"protectionSources",
+						"register"
+					]
+				},
+				"description": "Register a new protection source (Physical / Virtual)"
+			},
+			"response": []
+		},
+		{
+			"name": "Assign source to tenant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json;charset=UTF-8"
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"entityIds\":[167],\"tenantId\":\"xyzOrg/\"}"
+				},
+				"url": {
+					"raw": "{{host}}/public/tenants/entity",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"tenants",
+						"entity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create TagBased Protection Job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-impersonate-tenant-id",
+						"value": "xyzOrg/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tag Based Job Name\",\n    \"environment\": \"kVMware\",\n    \"parentSourceId\": 1,\n    \"vmTagIds\": [\n        [\n            1707\n        ]\n    ],\n    \"priority\": \"kMedium\",\n    \"alertingPolicy\": [\n        \"kFailure\"\n    ],\n    \"timezone\": \"Asia/Calcutta\",\n    \"incrementalProtectionSlaTimeMins\": 60,\n    \"fullProtectionSlaTimeMins\": 120,\n    \"qosType\": \"kBackupHDD\",\n    \"environmentParameters\": {\n        \"vmwareParameters\": {\n            \"fallbackToCrashConsistent\": true\n        }\n    },\n    \"indexingPolicy\": {\n        \"disableIndexing\": false,\n        \"allowPrefixes\": [\n            \"/\"\n        ],\n        \"denyPrefixes\": [\n            \"/$Recycle.Bin\",\n            \"/Windows\",\n            \"/Program Files\",\n            \"/Program Files (x86)\",\n            \"/ProgramData\",\n            \"/System Volume Information\",\n            \"/Users/*/AppData\",\n            \"/Recovery\",\n            \"/var\",\n            \"/usr\",\n            \"/sys\",\n            \"/proc\",\n            \"/lib\",\n            \"/grub\",\n            \"/grub2\"\n        ]\n    },\n    \"policyId\": \"2425993104764203:1568297549728:1\",\n    \"viewBoxId\": 2487759,\n    \"startTime\": {\n        \"hour\": 17,\n        \"minute\": 26,\n        \"second\": 6\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/protectionJobs",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"protectionJobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Protection Jobs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-impersonate-tenant-id",
+						"value": "xyzOrg/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/public/protectionJobs?allUnderHierarchy=false",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"public",
+						"protectionJobs"
+					],
+					"query": [
+						{
+							"key": "allUnderHierarchy",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
