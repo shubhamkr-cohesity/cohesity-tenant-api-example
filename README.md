@@ -13,10 +13,8 @@ The following demonstrates sequence of APIs to setup a working Cohesity tenant. 
 > curl -X POST \
   https://FQDN/irisservices/api/v1/public/accessTokens \
   -H 'Accept: */*' \
-  -H 'Accept-Encoding: gzip, deflate' \
   -H 'Connection: keep-alive' \
   -H 'Content-Type: application/json' \
-  -H 'cache-control: no-cache' \
   -d '{
 	"username": "user-name",
 	"password": "password",
@@ -33,11 +31,8 @@ The following demonstrates sequence of APIs to setup a working Cohesity tenant. 
 >curl -X POST \
   https://`FQDN`/irisservices/api/v1/public/tenants \
   -H 'Accept: */*' \
-  -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Connection: keep-alive' \
   -H 'Content-Type: application/json' \
-  -H 'cache-control: no-cache' \
   -d '{
   "description": "New Cohesity Tenant",
   "name": "XYZ Org",
@@ -55,9 +50,7 @@ Before assigning a protection policy to a tenant, one must fetch all the policie
   https://`FQDN`/irisservices/api/v1/public/protectionPolicies \
   -H 'Accept: */*' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Connection: keep-alive' \
-  -H 'Content-Type: application/json' \
-  -H 'cache-control: no-cache'
+  -H 'Content-Type: application/json'
 
  - No Query params are required.
 
@@ -91,9 +84,7 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
   https://`FQDN`/irisservices/api/v1/public/viewBoxes \
   -H 'Accept: */*' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Connection: keep-alive' \
-  -H 'Content-Type: application/json' \
-  -H 'cache-control: no-cache'
+  -H 'Content-Type: application/json' 
 
  - The API will only return those storage domains which are available in the System view and not mapped to any tenant (In case sharing of storage domain is disabled at the time of cluster config)
  - Use the query param `allUnderHierarchy=true` to fetch all storage domains under the organisation hierarchy.
@@ -104,9 +95,7 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
   https://`FQDN`/irisservices/api/v1/public/tenants/viewBox \
   -H 'Accept: */*' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Connection: keep-alive' \
   -H 'Content-Type: application/json' \
-  -H 'cache-control: no-cache' \
   -d '{
   "tenantId": "testOrg2/",
   "viewBoxIds": [
@@ -153,9 +142,7 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
   https://FQDN/irisservices/api/v1/public/users \
   -H 'Accept: */*' \
   -H 'Authorization:`TOKEN`' \
-  -H 'Connection: keep-alive' \
-  -H 'Content-Type: application/json' \
-  -H 'cache-control: no-cache'
+  -H 'Content-Type: application/json' 
  - This will return list of all users which are not assigned to any org and are available in the System view.
  - User query param `allUnderHierarchy=true` to fetch all users under the org hierarchy.
 
@@ -163,10 +150,7 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
 >curl -X PUT \
   https://`FQDN`/irisservices/api/v1/public/tenants/users \
   -H 'Authorization: `TOKEN`' \
-  -H 'Cache-Control: no-cache' \
-  -H 'Connection: keep-alive' \
   -H 'accept: application/json, text/plain, */*' \
-  -H 'cache-control: no-cache' \
   -H 'content-type: application/json;charset=UTF-8' \
   -d '{
   "sids": [
@@ -190,7 +174,6 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
   -H 'Accept: */*' \
   -H 'Authorization: `TOKEN`' \
   -H 'Content-Type: application/json' \
-  -H 'cache-control: no-cache' \
   -H 'x-impersonate-tenant-id: `TENANTID`' \
   -d '{
   "endpoint": "`vCenter-FQDN`",
@@ -222,7 +205,6 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
   https://`FQDN`/irisservices/api/v1/public/protectionJobs \
   -H 'Accept: */*' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Connection: keep-alive' \
   -H 'Content-Type: application/json' \
   -H 'x-impersonate-tenant-id: xyzOrg/' \
   -d '{
