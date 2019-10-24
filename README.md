@@ -263,3 +263,11 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
  - Import the Cohesity-tenant.postman_collection.json JSON file in POSTMAN
  - Set environment variables, `host=https://CLUSTER-FQDN/irisservices/api/v1` and `auth=<BEARER-TOKEN>`
  - Start consuming the APIs
+ 
+# Issues & Workarounds
+ - `public/viewBoxes` API doesn't list all the storage domains.
+ The API /public/viewBoxes will only return results if there is a storage domain which is not yet mapped to any tenant organisation. If all viewBoxes are associated with some tenants, the result will be empty. Use param flag, `public/viewBoxes?allUnderHierarchy=true` to return all the viewBoxes including the ones which are assigned to some tenants.
+
+- Error: `Storage Domain sharing is not enabled` 
+Make sure sharing of storage domains is enabled in the cluster. Go to `Admin` > `Cluster Settings` and under `Enable Organisations` enable `Allow multiple organizations to use one Storage Domain`
+
