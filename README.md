@@ -14,12 +14,8 @@ The following demonstrates sequence of APIs to setup a working Cohesity tenant. 
   https://FQDN/irisservices/api/v1/public/accessTokens \
   -H 'Accept: */*' \
   -H 'Accept-Encoding: gzip, deflate' \
-  -H 'Cache-Control: no-cache' \
   -H 'Connection: keep-alive' \
-  -H 'Content-Length: 66' \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: f3bd6ac7-e4b2-4cc8-ac89-d68f70e71e53,0c4c8216-aea6-4f36-a068-11209773b64b' \
-  -H 'User-Agent: PostmanRuntime/7.18.0' \
   -H 'cache-control: no-cache' \
   -d '{
 	"username": "user-name",
@@ -39,12 +35,8 @@ The following demonstrates sequence of APIs to setup a working Cohesity tenant. 
   -H 'Accept: */*' \
   -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Cache-Control: no-cache' \
   -H 'Connection: keep-alive' \
-  -H 'Content-Length: 103' \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: 49906893-96fe-43f7-980e-1f873037559b,bb90049c-ba78-4e4a-913e-f7cf2e59373b' \
-  -H 'User-Agent: PostmanRuntime/7.18.0' \
   -H 'cache-control: no-cache' \
   -d '{
   "description": "New Cohesity Tenant",
@@ -62,13 +54,9 @@ Before assigning a protection policy to a tenant, one must fetch all the policie
 >curl -X GET \
   https://`FQDN`/irisservices/api/v1/public/protectionPolicies \
   -H 'Accept: */*' \
-  -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Cache-Control: no-cache' \
   -H 'Connection: keep-alive' \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: 9c806602-ea88-4604-8822-c272439c2420,f663e70c-0923-4de7-ba02-618cbb682a6c' \
-  -H 'User-Agent: PostmanRuntime/7.18.0' \
   -H 'cache-control: no-cache'
 
  - No Query params are required.
@@ -78,14 +66,9 @@ Before assigning a protection policy to a tenant, one must fetch all the policie
 >curl -X PUT \
   https://`FQDN`/irisservices/api/v1/public/tenants/policy \
   -H 'Accept: */*' \
-  -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Cache-Control: no-cache' \
   -H 'Connection: keep-alive' \
-  -H 'Content-Length: 86' \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: 35fb7927-e8a6-4d1b-9dfb-7f6b5c1c55fa,9f58e676-06cf-4e3e-af28-98779abc22a9' \
-  -H 'User-Agent: PostmanRuntime/7.18.0' \
   -H 'cache-control: no-cache' \
   -d '{
   "policyIds": [
@@ -107,13 +90,9 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
 >curl -X GET \
   https://`FQDN`/irisservices/api/v1/public/viewBoxes \
   -H 'Accept: */*' \
-  -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Cache-Control: no-cache' \
   -H 'Connection: keep-alive' \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: 7335651a-dd32-4088-a3ef-a36164e88435,ad5f400b-d23e-4074-a967-21bd92d85686' \
-  -H 'User-Agent: PostmanRuntime/7.18.0' \
   -H 'cache-control: no-cache'
 
  - The API will only return those storage domains which are available in the System view and not mapped to any tenant (In case sharing of storage domain is disabled at the time of cluster config)
@@ -124,14 +103,9 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
 >curl -X PUT \
   https://`FQDN`/irisservices/api/v1/public/tenants/viewBox \
   -H 'Accept: */*' \
-  -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Cache-Control: no-cache' \
   -H 'Connection: keep-alive' \
-  -H 'Content-Length: 58' \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: fb17c6ff-b252-4570-bbed-1d5e4154f274,4b59f94c-8e49-4c91-ad3a-3c6fbaf41914' \
-  -H 'User-Agent: PostmanRuntime/7.18.0' \
   -H 'cache-control: no-cache' \
   -d '{
   "tenantId": "testOrg2/",
@@ -149,15 +123,9 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
 >curl -X POST \
   https://`FQDN`/irisservices/api/v1/public/users \
   -H 'Accept: application/json, text/plain, */*' \
-  -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Cache-Control: no-cache' \
   -H 'Connection: keep-alive' \
-  -H 'Content-Length: 256' \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: f16cb3f0-face-44e1-bed6-ee72f324f866,cd580605-e13f-477b-916c-bd06541cfa34' \
-  -H 'User-Agent: PostmanRuntime/7.18.0' \
-  -H 'cache-control: no-cache' \
   -H 'x-impersonate-tenant-id: `TENANTID`' \
   -d '{
     "domain": "LOCAL",
@@ -184,13 +152,9 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
 >curl -X GET \
   https://FQDN/irisservices/api/v1/public/users \
   -H 'Accept: */*' \
-  -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization:`TOKEN`' \
-  -H 'Cache-Control: no-cache' \
   -H 'Connection: keep-alive' \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: 7160264a-4e99-4ba9-95fc-d333358061c9,0b865547-04ae-4aec-8452-5ba53d8a7774' \
-  -H 'User-Agent: PostmanRuntime/7.18.0' \
   -H 'cache-control: no-cache'
  - This will return list of all users which are not assigned to any org and are available in the System view.
  - User query param `allUnderHierarchy=true` to fetch all users under the org hierarchy.
@@ -198,13 +162,9 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
 #### Assign SID to a tenant
 >curl -X PUT \
   https://`FQDN`/irisservices/api/v1/public/tenants/users \
-  -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: `TOKEN`' \
   -H 'Cache-Control: no-cache' \
   -H 'Connection: keep-alive' \
-  -H 'Content-Length: 82' \
-  -H 'Postman-Token: 5a679816-05e6-4566-8fc4-340cafa90ef0,2ee882c7-1edf-49dc-abdf-4be717c0dba0' \
-  -H 'User-Agent: PostmanRuntime/7.18.0' \
   -H 'accept: application/json, text/plain, */*' \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/json;charset=UTF-8' \
@@ -228,14 +188,8 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
 >curl -X POST \
   https://`FQDN`/irisservices/api/v1/public/protectionSources/register \
   -H 'Accept: */*' \
-  -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Cache-Control: no-cache' \
-  -H 'Connection: keep-alive' \
-  -H 'Content-Length: 158' \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: 0887d3a9-5d14-467e-b725-f8862a310ff0,fa4b8010-595a-47ce-93da-76136704cef3' \
-  -H 'User-Agent: PostmanRuntime/7.18.0' \
   -H 'cache-control: no-cache' \
   -H 'x-impersonate-tenant-id: `TENANTID`' \
   -d '{
@@ -253,15 +207,8 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
 [Reference Doc](https://developer.cohesity.com/apidocs-64.html#/rest/api-endpoints/tenant/update-tenant-entity)
 >curl -X PUT \
   https://`FQDN`/irisservices/api/v1/public/tenants/entity \
-  -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Cache-Control: no-cache' \
-  -H 'Connection: keep-alive' \
-  -H 'Content-Length: 55' \
-  -H 'Postman-Token: ebf8b388-7207-4d54-a03a-9062b9235b61,30721451-f416-497c-b8d8-37de84d83b6d' \
-  -H 'User-Agent: PostmanRuntime/7.18.0' \
   -H 'accept: application/json, text/plain, */*' \
-  -H 'cache-control: no-cache' \
   -H 'content-type: application/json;charset=UTF-8' \
   -d '{"entityIds":[167, 201, 215, 216],"tenantId":"xyzOrg/"}'
 
@@ -274,15 +221,9 @@ To assign a storage domain, first fetch the list of storage domains using a `GET
 >curl -X POST \
   https://`FQDN`/irisservices/api/v1/public/protectionJobs \
   -H 'Accept: */*' \
-  -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: `TOKEN`' \
-  -H 'Cache-Control: no-cache' \
   -H 'Connection: keep-alive' \
-  -H 'Content-Length: 1208' \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: 96aa41a8-cd73-4756-9ce1-dec73f4c2caa,02086d9d-3af1-447d-a9ac-045076a684dc' \
-  -H 'User-Agent: PostmanRuntime/7.18.0' \
-  -H 'cache-control: no-cache' \
   -H 'x-impersonate-tenant-id: xyzOrg/' \
   -d '{
     "name": "Tag Based Job Name",
